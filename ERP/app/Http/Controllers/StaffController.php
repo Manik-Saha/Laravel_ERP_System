@@ -70,7 +70,8 @@ class StaffController extends Controller
 
         $staff->save();
 
-        return redirect()->route('Staff.list');
+        $req->session()->flash('msg', 'Congratulations! New employee has been registered!...');
+        return redirect()->route('Staff.create');
     }
 
     /**

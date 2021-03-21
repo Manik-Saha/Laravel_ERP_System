@@ -24,31 +24,43 @@ use App\Http\Controllers\OrderController;
 |
 */
 
-Route::get('/',[dashboardController::Class,'dashboard'])->name('dashboard');
+Route::get('/',[dashboardController::class,'dashboard'])->name('dashboard');
 
-Route::get('/dashboard',[dashboardController::Class,'dashboard'])->name('dashboard');
-Route::get('/category',[inventoryController::Class,'allCategory'])->name('category');
-Route::get('/addcategory',[inventoryController::Class,'addCategory'])->name('addcategory');
-Route::post('/storecategory',[inventoryController::Class,'store'])->name('storecategory');
-Route::get('/allcategory',[inventoryController::Class,'allCategory']);
-Route::get('delete/category/{id}',[inventoryController::Class,'delete']);
-Route::get('edit/category/{id}',[inventoryController::Class,'edit']);
-Route::post('update/category/{id}',[inventoryController::Class,'update']);
+Route::get('/dashboard',[dashboardController::class,'dashboard'])->name('dashboard');
+Route::get('/category',[inventoryController::class,'allCategory'])->name('category');
+Route::get('/addcategory',[inventoryController::class,'addCategory'])->name('addcategory');
+Route::post('/storecategory',[inventoryController::class,'store'])->name('storecategory');
+Route::get('/allcategory',[inventoryController::class,'allCategory']);
+Route::get('delete/category/{id}',[inventoryController::class,'delete']);
+Route::get('edit/category/{id}',[inventoryController::class,'edit']);
+Route::post('update/category/{id}',[inventoryController::class,'update']);
 
 //brand
-Route::get('/brand',[inventoryController::Class,'allbrand'])->name('brand');
-Route::get('/addbrand',[inventoryController::Class,'addbrand'])->name('addbrand');
-Route::post('/storebrand',[inventoryController::Class,'storebrand'])->name('storebrand');
-Route::get('/allbrand',[inventoryController::Class,'allbrand']);
-Route::get('delete/brand/{id}',[inventoryController::Class,'deleteb']);
-Route::get('edit/brand/{id}',[inventoryController::Class,'editb']);
-Route::post('update/brand/{id}',[inventoryController::Class,'updateb']);
+Route::get('/brand',[inventoryController::class,'allbrand'])->name('brand');
+Route::get('/addbrand',[inventoryController::class,'addbrand'])->name('addbrand');
+Route::post('/storebrand',[inventoryController::class,'storebrand'])->name('storebrand');
+Route::get('/allbrand',[inventoryController::class,'allbrand']);
+Route::get('delete/brand/{id}',[inventoryController::class,'deleteb']);
+Route::get('edit/brand/{id}',[inventoryController::class,'editb']);
+Route::post('update/brand/{id}',[inventoryController::class,'updateb']);
 
 //products
-Route::get('/product',[productController::Class,'allproduct'])->name('product');
-Route::get('/addproduct',[productController::Class,'addproduct'])->name('addproduct');
-Route::post('/storeproduct',[productController::Class,'storeproduct'])->name('storeproduct');
-Route::get('edit/product/{id}',[productController::Class,'editproduct']);
+Route::get('/product',[productController::class,'allproduct'])->name('product');
+Route::get('/addproduct',[productController::class,'addproduct'])->name('addproduct');
+Route::post('/storeproduct',[productController::class,'storeproduct'])->name('storeproduct');
+Route::get('edit/product/{id}',[productController::class,'editproduct']);
+
+
+
+
+Route::group(['middleware' => 'hr_manager'], function(){
+    
+//HR
+Route::get('HR/dashboard', [HrController::class, 'index'])->name('HR.dashboard');
+Route::get('HR/profile', [HrController::class, 'profile']);
+Route::get('HR/chat', [HrController::class, 'chat']);
+Route::get('HR/change_password', [HrController::class, 'changePassword'])->name('HR.changePassword');
+Route::post('HR/change_password', [HrController::class, 'storeChangePassword']);
 
 //Staff
 Route::get('Staff/create',[StaffController::class, 'create'])->name('Staff.create');
@@ -63,13 +75,9 @@ Route::post('Staff/promotion/{user_id}', [StaffController::class, 'storePromotio
 Route::get('Staff/bonus/{user_id}', [StaffController::class, 'bonus'])->name('Staff.bonus');
 Route::post('Staff/bonus/{user_id}', [StaffController::class, 'storeBonus']);
 
+});
 
-//HR
-Route::get('HR/dashboard', [HrController::class, 'index'])->name('HR.dashboard');
-Route::get('HR/profile', [HrController::class, 'profile']);
-Route::get('HR/chat', [HrController::class, 'chat']);
-Route::get('HR/change_password', [HrController::class, 'changePassword'])->name('HR.changePassword');
-Route::post('HR/change_password', [HrController::class, 'storeChangePassword']);
+Route::group(['middleware' => 'supply_chain_manager'], function(){
 
 //Supply chain manager
 Route::get('supply_chain_manager/dashboard', [SupplyChainManagerController::class, 'index'])->name('SupplyChainManager.dashboard');
@@ -85,12 +93,15 @@ Route::post('supply_chain_manager/edit_production/{product_id}', [SupplyChainMan
 Route::get('supply_chain_manager/all_upcoming_production', [SupplyChainManagerController::class, 'upcomingProduction'])->name('SupplyChainManager.upcoming');
 
 //order
-Route::get('supply_chain_manager/all_order', [OrderController::class, 'index'])->name('SupplyChainManager.order');
-Route::get('supply_chain_manager/cancelled_order', [OrderController::class, 'cancelled'])->name('SupplyChainManager.cancelledOrder');
-Route::get('supply_chain_manager/complete_order', [OrderController::class, 'complete'])->name('SupplyChainManager.completeOrder');
-Route::get('supply_chain_manager/running_order', [OrderController::class, 'running'])->name('SupplyChainManager.runningOrder');
-Route::get('supply_chain_manager/running_order/edit/{order_id}', [OrderController::class, 'editOrder'])->name('SupplyChainManager.editOrder');
-Route::post('supply_chain_manager/running_order/edit/{order_id}', [OrderController::class, 'storeOrder']);
+Route::get('supply_chain_manager/order_management/all_order', [OrderController::class, 'index'])->name('SupplyChainManager.order');
+Route::get('supply_chain_manager/order_management/cancelled_order', [OrderController::class, 'cancelled'])->name('SupplyChainManager.cancelledOrder');
+Route::get('supply_chain_manager/order_management/complete_order', [OrderController::class, 'complete'])->name('SupplyChainManager.completeOrder');
+Route::get('supply_chain_manager/order_management/running_order', [OrderController::class, 'running'])->name('SupplyChainManager.runningOrder');
+Route::get('supply_chain_manager/order_management/order/edit/{order_id}', [OrderController::class, 'editOrder'])->name('SupplyChainManager.editOrder');
+Route::post('supply_chain_manager/order_management/order/edit/{order_id}', [OrderController::class, 'storeOrder']);
+
+});
+
 
 //Login
 Route::get('/login', [LoginController::class, 'index']);

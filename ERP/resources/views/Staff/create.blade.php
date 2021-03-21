@@ -1,6 +1,7 @@
 @extends('layout.hr')
 
 @section('main_content')
+<h1>Register new staff</h1>
 <center>
     <form method="post" enctype="multipart/form-data">
         @csrf

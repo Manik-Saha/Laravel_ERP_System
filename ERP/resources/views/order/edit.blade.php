@@ -1,4 +1,4 @@
-@extends('layout.hr')
+@extends('layout.supply_chain_manager')
 
 @section('main_content')
 <h1>Edit Orders, {{ $order['order_id'] }}</h1>

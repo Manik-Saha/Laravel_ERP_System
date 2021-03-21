@@ -33,7 +33,7 @@ class HrController extends Controller
         if($hr[0]->password == $req->Opassword){
             if($req->Npassword == $req->CNpassword){
 
-            $flag = DB::table('hr_manager')->where('user_name', $hr[0]->user_name)->update(['password' => $req->Npassword]);
+            DB::table('hr_manager')->where('user_name', $hr[0]->user_name)->update(['password' => $req->Npassword]);
 
             $req->session()->flash('msg', 'Congratulations! Password change successfully..');
             return redirect()->route('HR.changePassword');
