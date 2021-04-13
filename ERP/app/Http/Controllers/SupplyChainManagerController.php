@@ -16,10 +16,10 @@ class SupplyChainManagerController extends Controller
         return view('supply_chain_manager.index');
     }
 
-    public function profile(Request $req){
+    public function profile(){
         $supply_chain_manager = DB::table('supply_chain_manager')
-              ->where('user_name', 'supply_manager')
-              ->get();
+        ->where('user_name', 'supply_manager')
+        ->get();
         return view('supply_chain_manager.profile')->with('user',$supply_chain_manager);
     }
 

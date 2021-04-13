@@ -5,15 +5,18 @@
 <center>
     <form method="post" enctype="multipart/form-data">
         @csrf
-        @foreach($errors->all() as $err)
-        <p style="color: red; font-size: 15px;">{{$err}} <br></p>
-        @endforeach
-        <p style="color: red; font-size: 15px;">{{ session('msg') }} <br></p>
-
+        <p style="color: red; font-size: 15px;">{{ session('congratulations') }}</p>
         <table>
             <tr>
                 <td>Upload image :</td>
                 <td><input type="file" name="staffImage"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <p style="color: red; font-size: 15px;">{{ $errors->first('staffImage') }}</p>
+
+                </td>
             </tr>
             <tr>
                 <td><label for="status">Status :</label></td>
@@ -25,11 +28,23 @@
                 </td>
             </tr>
             <tr>
+                <td></td>
+                <td>
+                    <p style="color: red; font-size: 15px;">{{ $errors->first('status') }}</p>
+                </td>
+            </tr>
+            <tr>
                 <td>
                     User-name :
                 </td>
                 <td>
                     <input type="text" name="user_name" value="">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <p style="color: red; font-size: 15px;">{{ $errors->first('user_name') }}</p>
                 </td>
             </tr>
             <tr>
@@ -41,11 +56,23 @@
                 </td>
             </tr>
             <tr>
+                <td></td>
+                <td>
+                    <p style="color: red; font-size: 15px;">{{ $errors->first('first_name') }}</p>
+                </td>
+            </tr>
+            <tr>
                 <td>
                     Last name :
                 </td>
                 <td>
                     <input type="text" name="last_name" value="">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <p style="color: red; font-size: 15px;">{{ $errors->first('last_name') }}</p>
                 </td>
             </tr>
             <tr>
@@ -57,11 +84,29 @@
                 </td>
             </tr>
             <tr>
+                <td></td>
+                <td>
+                    <p style="color: red; font-size: 15px;">{{ $errors->first('password') }}</p>
+                </td>
+            </tr>
+            <tr>
                 <td>
                     Confirm password :
                 </td>
                 <td>
                     <input type="password" name="Cpassword" value="">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <p style="color: red; font-size: 15px;">{{ session('password') }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <p style="color: red; font-size: 15px;">{{ $errors->first('Cpassword') }}</p>
                 </td>
             </tr>
             <tr>
@@ -77,11 +122,23 @@
                 </td>
             </tr>
             <tr>
+                <td></td>
+                <td>
+                    <p style="color: red; font-size: 15px;">{{ $errors->first('gender') }}</p>
+                </td>
+            </tr>
+            <tr>
                 <td>
                     Home address :
                 </td>
                 <td>
                     <input type="text" name="address" value="">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <p style="color: red; font-size: 15px;">{{ $errors->first('address') }}</p>
                 </td>
             </tr>
             <tr>
@@ -93,11 +150,23 @@
                 </td>
             </tr>
             <tr>
+                <td></td>
+                <td>
+                    <p style="color: red; font-size: 15px;">{{ $errors->first('email') }}</p>
+                </td>
+            </tr>
+            <tr>
                 <td>
                     Contact no. :
                 </td>
                 <td>
                     <input type="text" name="phone" value="">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <p style="color: red; font-size: 15px;">{{ $errors->first('phone') }}</p>
                 </td>
             </tr>
             <tr>
@@ -109,11 +178,23 @@
                 </td>
             </tr>
             <tr>
+                <td></td>
+                <td>
+                    <p style="color: red; font-size: 15px;">{{ $errors->first('birth') }}</p>
+                </td>
+            </tr>
+            <tr>
                 <td>
                     Joining date :
                 </td>
                 <td>
                     <input type="date" name="joining" value="">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <p style="color: red; font-size: 15px;">{{ $errors->first('joining') }}</p>
                 </td>
             </tr>
             <tr>
@@ -126,6 +207,12 @@
 
                     <input type="radio" name="marriage" value="Unmarried">
                     <label>Unmarried</label>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <p style="color: red; font-size: 15px;">{{ $errors->first('marriage') }}</p>
                 </td>
             </tr>
             <tr>
@@ -144,11 +231,23 @@
                 </td>
             </tr>
             <tr>
+                <td></td>
+                <td>
+                    <p style="color: red; font-size: 15px;">{{ $errors->first('blood_group') }}</p>
+                </td>
+            </tr>
+            <tr>
                 <td>
                     Salary :
                 </td>
                 <td>
                     <input type="text" name="salary" value="">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <p style="color: red; font-size: 15px;">{{ $errors->first('salary') }}</p>
                 </td>
             </tr>
         </table>

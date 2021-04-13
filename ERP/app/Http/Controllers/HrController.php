@@ -26,6 +26,10 @@ class HrController extends Controller
         return view('hr.changePassword');
     }
 
+    public function chat(){
+        return redirect('chat');
+    }
+
     public function storeChangePassword(Request $request, ChangePasswordRequest $req){
         $hr = DB::table('hr_manager')
                 ->where('user_name', 'hr_manager')

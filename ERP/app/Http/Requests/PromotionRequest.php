@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BonusRequest extends FormRequest
+class PromotionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,14 +24,14 @@ class BonusRequest extends FormRequest
     public function rules()
     {
         return [
-            'bonus' => 'required|numeric|bail'
+            'salary' => 'required|numeric|bail'
         ];
     }
 
     public function messages(){
         return [
-             'bonus.required' => 'Please fill up with numeric values',
-             'bonus.numeric' => 'Please fill up with numeric values',
+             'salary.required' => 'Please fill up with numeric values',
+             'salary.numeric' => 'Please fill up with numeric values',
         ];
     }
 }

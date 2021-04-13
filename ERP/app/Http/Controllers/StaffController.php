@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Staff;
 use Illuminate\Http\Request;
 use App\Http\Requests\NewStaffRequest;
+use App\Http\Requests\StaffRequest;
 use App\Http\Requests\BonusRequest;
+use App\Http\Requests\PromotionRequest;
 
 class StaffController extends Controller
 {
@@ -37,41 +39,50 @@ class StaffController extends Controller
      */
     public function store(NewStaffRequest $req)
     {
-       If($req->hasFile('staffImage')){
+       if($req->hasFile('staffImage')){
         $file = $req->file('staffImage');
-           if($file->getClientOriginalExtension() == 'jpeg' || $file->getClientOriginalExtension() == 'jpg' || $file->getClientOriginalExtension() == 'img' || $file->getClientOriginalExtension() == 'png')
+           if($file->getClientOriginalExtension() == 'jpeg' || $file->getClientOriginalExtension() == 'JPEG' || $file->getClientOriginalExtension() == 'jpg' || $file->getClientOriginalExtension() == 'JPG' || $file->getClientOriginalExtension() == 'img' || $file->getClientOriginalExtension() == 'IMG' || $file->getClientOriginalExtension() == 'png' ||$file->getClientOriginalExtension() == 'PNG')
            {
             $filename = time().".".$file->getClientOriginalExtension();
             $file->move('upload',$filename);
+
+            if($req->password == $req->Cpassword){
+
+                $staff = new Staff();
+                $staff->user_name = $req->user_name;
+                $staff->first_name = $req->first_name;
+                $staff->last_name = $req->last_name;
+                $staff->password = $req->password;
+                $staff->home_address = $req->address;
+                $staff->email = $req->email;
+                $staff->phone = $req->phone;
+                $staff->status = $req->status;
+                $staff->gender = $req->gender;
+                $staff->birth_date = $req->birth;
+                $staff->joining_date = $req->joining;
+                $staff->marital_status = $req->marriage;
+                $staff->blood = $req->blood_group;
+                $staff->salary = $req->salary;
+                $staff->picture = $filename;
+        
+                $staff->save();
+        
+                $req->session()->flash('congratulations', 'Congratulations! New employee has been registered!...');
+                return redirect()->route('Staff.create');
+               }else{
+                $req->session()->flash('password', 'Password and confirmation password do not match...');
+                return redirect()->route('Staff.create');
+               }
            }else{
-            $req->session()->flash('msg', 'Your uploaded file is not a picture...');
+            $req->session()->flash('picture', 'Your uploaded file is not a picture...');
+            return redirect()->route('Staff.create');
            }
        }else{
-        $req->session()->flash('msg', 'Please upload a picture...');
+        $req->session()->flash('picture', 'Please upload a picture...');
+        return redirect()->route('Staff.create');
        }
        
        
-        $staff = new Staff();
-    	$staff->user_name = $req->user_name;
-    	$staff->first_name = $req->first_name;
-    	$staff->last_name = $req->last_name;
-    	$staff->password = $req->password;
-    	$staff->home_address = $req->address;
-    	$staff->email = $req->email;
-    	$staff->phone = $req->phone;
-        $staff->status = $req->status;
-    	$staff->gender = $req->gender;
-    	$staff->birth_date = $req->birth;
-    	$staff->joining_date = $req->joining;
-    	$staff->marital_status = $req->marriage;
-    	$staff->blood = $req->blood_group;
-    	$staff->salary = $req->salary;
-        $staff->picture = $filename;
-
-        $staff->save();
-
-        $req->session()->flash('msg', 'Congratulations! New employee has been registered!...');
-        return redirect()->route('Staff.create');
     }
 
     /**
@@ -106,7 +117,7 @@ class StaffController extends Controller
      * @param  \App\Models\Staff  $staff
      * @return \Illuminate\Http\Response
      */
-    public function update($user_id, Request $req)
+    public function update($user_id, StaffRequest $req)
     {
         $staff = Staff::find($user_id);
 
@@ -123,7 +134,8 @@ class StaffController extends Controller
 
         $staff->save();
 
-        return redirect()->route('Staff.list');
+        $req->session()->flash('congratulations', 'Congratulations! information updated successfully!...');
+        return view('Staff.edit')->with('user', $staff);
         
     }
 
@@ -133,9 +145,10 @@ class StaffController extends Controller
      * @param  \App\Models\Staff  $staff
      * @return \Illuminate\Http\Response
      */
-    public function destroy($user_id)
+    public function destroy($user_id, Request $req)
     {
         if(Staff::destroy($user_id)){
+            $req->session()->flash('msg', 'Deleteed successfully!...');
             return redirect()->route('Staff.list');
         }else{
             return redirect()->route('Staff.delete');
@@ -152,7 +165,7 @@ class StaffController extends Controller
         return view('Staff.promotion')->with('user', $staff);
     }
 
-    public function storePromotion($user_id, Request $req){
+    public function storePromotion($user_id, PromotionRequest $req){
 
         $staff = Staff::find($user_id);
 
@@ -161,7 +174,8 @@ class StaffController extends Controller
 
         $staff->save();
 
-        return redirect()->route('Staff.list');
+        $req->session()->flash('congratulations', 'Congratulations! Staff Promoted successfully!...');
+        return view('Staff.promotion')->with('user', $staff);
     }
 
     public function bonus($user_id){
@@ -176,6 +190,7 @@ class StaffController extends Controller
         $staff->bonus= $req->bonus;
         $staff->save();
 
-        return redirect()->route('Staff.list');
+        $req->session()->flash('congratulations', 'Congratulations! Bonus given successfully!...');
+        return view('Staff.bonus')->with('user', $staff);
     }
 }

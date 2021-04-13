@@ -4,6 +4,8 @@
 <h1>Staff details</h1>
 <center>
     <form>
+    @csrf
+    <p style="color: red; font-size: 15px;">{{ session('msg') }}</p>
         <input type="text" placeholder="enter employee ID">
         <button>Search</button> <br> <br>
         <table border="1">

@@ -16,7 +16,7 @@ class ChatMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        dd('chat middleware');
+        dd('Chat Messenger');
         
         return $next($request);
     }

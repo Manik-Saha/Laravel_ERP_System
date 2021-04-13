@@ -62,6 +62,9 @@ Route::get('HR/chat', [HrController::class, 'chat']);
 Route::get('HR/change_password', [HrController::class, 'changePassword'])->name('HR.changePassword');
 Route::post('HR/change_password', [HrController::class, 'storeChangePassword']);
 
+//chat
+Route::get('chat', [HrController::class, 'chat']);
+
 //Staff
 Route::get('Staff/create',[StaffController::class, 'create'])->name('Staff.create');
 Route::post('Staff/create',[StaffController::class, 'store']);

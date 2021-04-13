@@ -27,4 +27,13 @@ class ChangePasswordRequest extends FormRequest
             'Npassword' => 'required|min:8|bail'
         ];
     }
+
+    public function messages(){
+        return [
+
+            'Npassword.required' =>"Please enter your new Password",
+            'Npassword.min' => "Password must be at least 8 characters.",
+
+        ];
+    }
 }

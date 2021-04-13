@@ -22,7 +22,7 @@ class HrMiddleware
         }
         else
         {
-            $request->session()->flash('msg','Invalid req ... at first logged in as an Admin!');
+            $request->session()->flash('msg','Invalid req ... at first logged in as an HR manager!');
             return redirect('/login');
         }
     }

@@ -5,6 +5,11 @@
 <center>
     <form method="post">
       @csrf
+      @foreach($errors->all() as $err)
+        <p style="color: red; font-size: 15px;">{{$err}}</p> <br>
+@endforeach
+<p style="color: red; font-size: 15px;">{{ session('congratulations') }}</p>
+
         <table>
             <tr>
                 <td><label for="status">Status :</label></td>

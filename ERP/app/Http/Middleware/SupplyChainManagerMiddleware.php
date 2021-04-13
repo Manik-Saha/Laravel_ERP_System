@@ -22,7 +22,7 @@ class SupplyChainManagerMiddleware
         }
         else
         {
-            $request->session()->flash('msg','Invalid req ... at first logged in as an Supply manager!');
+            $request->session()->flash('msg','Invalid req ... at first logged in as an Supply chain manager!');
             return redirect('/login');
         }
     }
