@@ -88,6 +88,8 @@ Route::get('supply_chain_manager/profile', [SupplyChainManagerController::class,
 Route::get('supply_chain_manager/change_password', [SupplyChainManagerController::class, 'changePassword'])->name('SupplyChainManager.changePassword');
 Route::post('supply_chain_manager/change_password', [SupplyChainManagerController::class, 'storeChangePassword']);
 
+
+
 //production
 Route::get('supply_chain_manager/all_production', [SupplyChainManagerController::class, 'production'])->name('SupplyChainManager.production');
 Route::get('supply_chain_manager/all_ready_production', [SupplyChainManagerController::class, 'readyProduction'])->name('SupplyChainManager.ready');

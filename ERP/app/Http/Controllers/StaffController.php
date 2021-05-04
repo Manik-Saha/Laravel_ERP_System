@@ -9,8 +9,7 @@ use App\Http\Requests\StaffRequest;
 use App\Http\Requests\BonusRequest;
 use App\Http\Requests\PromotionRequest;
 
-class StaffController extends Controller
-{
+class StaffController extends Controller{
     /**
      * Display a listing of the resource.
      *
