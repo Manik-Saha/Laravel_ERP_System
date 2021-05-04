@@ -1,6 +1,8 @@
+import './Create.css'
+
 const Delete = ()=>{
     return(
-        <div>
+        <div class='Form'>
             <table>
                 <thead></thead>
                 <tbody>

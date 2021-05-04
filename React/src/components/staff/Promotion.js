@@ -1,6 +1,8 @@
+import './Create.css'
+
 const Promotion = ()=>{
     return(
-        <div>
+        <div class='Form'>
             <form method="post">
                 <table>
                     <thead></thead>

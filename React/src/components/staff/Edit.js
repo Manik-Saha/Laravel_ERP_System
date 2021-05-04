@@ -1,6 +1,8 @@
+import './Create.css'
+
 const Edit = ()=>{
     return(
-        <div>
+        <div class='Form'>
             <form method="post" action="">
                 <table>
                     <thead></thead>

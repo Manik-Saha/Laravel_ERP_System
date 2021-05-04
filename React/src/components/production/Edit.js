@@ -17,6 +17,7 @@ const ProductionEdit = ()=>{
             </tr>
                 </tbody>
             </table>
+            <br/><input type="submit" name="submit" value="Save"/>
         </div>
     );
 };

@@ -1,13 +1,13 @@
 import {Link} from  'react-router-dom';
+import './Create.css'
 
 export default function List(){
     return(
-        <div>
+        <div class='Form'>
             <table border='1'>
                 <thead></thead>
                 <tbody>
                     <tr>
-                        <th></th>
                         <th>User ID</th>
                         <th>Edit</th>
                         <th>Delete</th>
@@ -30,15 +30,10 @@ export default function List(){
                         <th>Bonus</th>
                     </tr>
                     <tr>
-                        <Link></Link>
-                        <Link></Link>
-                        <Link></Link>
-                        <Link></Link>
-                        <Link></Link>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><Link to='/Staff/edit:id'>Edit Information</Link></td>
+                        <td><Link to='/Staff/delete:id'>Delete</Link></td>
+                        <td><Link to='/Staff/promotion:id'>Promote Employee</Link></td>
+                        <td><Link to='/Staff/bonus:id'>Give Bonus</Link></td>
                         <td></td>
                         <td></td>
                         <td></td>

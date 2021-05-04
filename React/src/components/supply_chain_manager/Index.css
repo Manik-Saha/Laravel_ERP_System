@@ -1,0 +1,19 @@
+.App {
+    width: 100px;
+    height: 100px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.Sidebar {
+    height: 900px;
+    width: 300px;
+    background-color: rgb(1, 20, 27);
+}
+
+h2{
+    color: white;
+}

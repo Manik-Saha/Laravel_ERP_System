@@ -1,26 +1,33 @@
 import './App.css';
+
 import Create from './components/staff/Create';
 import Bonus from './components/staff/Bonus';
 import Delete from './components/staff/Delete';
 import Edit from './components/staff/Edit';
 import List from './components/staff/List';
 import Promotion from './components/staff/Promotion';
+
 import ChangePassword from './components/hr/ChangePassword';
 import Index from './components/hr/Index';
 import Profile from './components/hr/Profile';
+
 import ChangePassword2 from './components/supply_chain_manager/ChangePassword';
 import Index2 from './components/supply_chain_manager/Index';
 import Profile2 from './components/supply_chain_manager/Profile';
+
 import Login from './components/login/Index';
+
 import Cancelled from './components/order/Cancelled';
 import Complete from './components/order/Complete';
 import Running from './components/order/Running';
 import OrderEdit from './components/order/Edit';
 import OrderIndex from './components/order/Index';
+
 import ProductionEdit from './components/production/Edit';
 import ProductionIndex from './components/production/Index';
 import Ready from './components/production/Ready';
 import Upcoming from './components/production/Upcoming';
+
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 function App() {
@@ -103,7 +110,7 @@ function App() {
                 <Complete/>
               </Route>
 
-              <Route path='/supply_chain_manager/order_management/edit:order_id'>
+              <Route path='/supply_chain_manager/order_management/order/edit:order_id'>
                 <OrderEdit/>
               </Route>
 
@@ -121,6 +128,14 @@ function App() {
 
               <Route path = '/supply_chain_manager/edit_production:product_id'>
                 <ProductionEdit />
+              </Route>
+
+              <Route path = '/logout'>
+                <Login />
+              </Route>
+
+              <Route path='*'>
+                  <h1>404 not found</h1>
               </Route>
 
             </Switch>
