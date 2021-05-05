@@ -30,7 +30,6 @@
                 <th>Blood group</th>
                 <th>Salary</th>
                 <th>Bonus</th>
-
             </tr>
             @for($i=0; $i < count($list); $i++) <tr>
                 <td>{{$list[$i]['user_id']}}</td>

@@ -1,6 +1,8 @@
+import './ChangePassword.css';
+
 const ChangePassword = ()=>{
     return(
-        <div>
+        <div className="Change">
             <form method="post">
                 <fieldset>
                     <table>
@@ -32,8 +34,8 @@ const ChangePassword = ()=>{
                 </tr>
                         </tbody>
                     </table>
+                    <br/><input type="submit" name="submit" value="Change password"/>
                 </fieldset>
-                <br/><input type="submit" name="submit" value="Change password"/>
             </form>
         </div>
     );

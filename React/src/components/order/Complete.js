@@ -1,6 +1,9 @@
+import {Link} from  'react-router-dom';
+import './Edit.css';
+
 const Complete= ()=>{
     return(
-        <div>
+        <div className="Form">
         <form>
             <table border ='1'>
                 <thead></thead>
@@ -22,7 +25,7 @@ const Complete= ()=>{
                     </tr>
                     <tr>
                         <td> </td>
-                        <td> <a href="">Edit</a></td>
+                        <td><Link to='/supply_chain_manager/order_management/order/edit:order_id'>Edit Order</Link></td>
                         <td></td>
                         <td></td>
                         <td></td>

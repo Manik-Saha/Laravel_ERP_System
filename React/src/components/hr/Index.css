@@ -11,9 +11,14 @@ body {
 .Sidebar {
   height: 900px;
   width: 300px;
-  background-color: rgb(2, 35, 48);
+  margin-top: 0;
+  background-color: rgb(3, 53, 73);
 }
 
 h2 {
   color: white;
+}
+
+p {
+  color: yellow;
 }

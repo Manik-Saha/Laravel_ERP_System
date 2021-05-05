@@ -6,9 +6,11 @@ const Index = ()=>{
     return(
         <div class="Sidebar">
             <h2>My Profile</h2>
-            <Link to='/HR/dashboard'>Home</Link> <br></br>
-            <Link to='/HR/profile'>View My Profile</Link><br></br>
-            <Link to='/HR/change_password'>Change Password</Link><br></br>
+            <p>
+                <Link to='/HR/dashboard'>Home</Link> <br></br>
+                <Link to='/HR/profile'>View My Profile</Link><br></br>
+                <Link to='/HR/change_password'>Change Password</Link><br></br>
+            </p>
 
             <br></br>
             <br></br>
